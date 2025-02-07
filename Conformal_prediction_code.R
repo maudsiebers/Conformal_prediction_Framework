@@ -25,13 +25,13 @@ library(ggplot2)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))  
 
 #### read in MSI estimate file and add a year column
-Chl_MSI<- read.csv('Esth_Amended.csv') %>% 
+Chl_MSI<- read.csv('Chl_MSI_ExampleLake.csv') %>%   ### amend to your own MSI estimate files
   mutate(Year = year(as.Date(Date, format = '%d/%m/%Y')),
          Date = as.Date(Date, format = '%d/%m/%Y'))
 
 
 ###### Observed available data 
-Observed <- read.csv('Observed_chl_EsthwaiteWater.csv') %>%
+Observed <- read.csv('Observed_chl.csv') %>%  #### amend to your own in situ chl
   rename(Observed = Chlorophyll) %>%
   mutate(
     Date = as.Date(Date, format = '%d/%m/%Y'),
